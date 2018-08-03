@@ -22,6 +22,7 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Widgetset;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
+import com.vaadin.event.ShortcutAction;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.WrappedPortletSession;
 import com.vaadin.shared.ui.label.ContentMode;
@@ -77,7 +78,7 @@ public class UserDBPortletUI extends QBiCPortletUI {
 
   private IOpenBisClient openbis;
   private final boolean testMode = false;
-  private final boolean development = false;
+  private final boolean development = true;
 
   @Override
   protected Layout getPortletContent(final VaadinRequest request) {
@@ -406,7 +407,7 @@ public class UserDBPortletUI extends QBiCPortletUI {
           search.setAffiliations(new ArrayList<Affiliation>());
       }
     });
-
+    
     search.getSearchPersonButton().addClickListener(new Button.ClickListener() {
       @Override
       public void buttonClick(ClickEvent event) {
@@ -416,8 +417,8 @@ public class UserDBPortletUI extends QBiCPortletUI {
         } else
           search.setPersons(new ArrayList<Person>());
       }
-    });
-
+    });    
+    
     addAffilTab.getCommitButton().addClickListener(new Button.ClickListener() {
 
       @Override

@@ -24,6 +24,7 @@ import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
@@ -31,11 +32,13 @@ import com.vaadin.ui.themes.ValoTheme;
 
 import life.qbic.datamodel.persons.Affiliation;
 import life.qbic.datamodel.persons.Person;
+import life.qbic.datamodel.persons.PersonAffiliationConnectionInfo;
+import life.qbic.portal.components.StandardTextField;
 
 public class SearchView extends VerticalLayout {
 
-  private TextField inputPerson;
-  private TextField inputAffiliation;
+  private StandardTextField inputPerson;
+  private StandardTextField inputAffiliation;
   private Button searchPerson;
   private Table personsTable;
   private Table affiliationsOfPerson;
@@ -49,16 +52,16 @@ public class SearchView extends VerticalLayout {
     setMargin(true);
 
     setCaption("Search for entries in the Database");
-    HorizontalLayout searchFields = new HorizontalLayout();
-    searchFields.setSpacing(true);
-    inputPerson = new TextField("Search for Person");
-    // searchFields.
-    addComponent(inputPerson);
-    // searchFields.addComponent(inputAffiliation);
+        
+   
+    Label personLabel = new Label("Search for Person");
+    addComponent(personLabel);
+    inputPerson = new StandardTextField();
     searchPerson = new Button("Search");
-    // addComponent(searchFields);
-    addComponent(searchPerson);
-
+    HorizontalLayout searchFields = new HorizontalLayout(inputPerson, searchPerson);
+    searchFields.setSpacing(true);
+    addComponent(searchFields);
+    
     personsTable = new Table("People");
     personsTable.setPageLength(1);
     personsTable.setStyleName(ValoTheme.TABLE_SMALL);
@@ -118,10 +121,15 @@ public class SearchView extends VerticalLayout {
     affiliationsOfPerson.addContainerProperty("ZIP", String.class, null);
     addComponent(affiliationsOfPerson);
 
-    inputAffiliation = new TextField("Search for Affiliation");
-    addComponent(inputAffiliation);
+   
+   
+    Label affiliationLabel = new Label("Search for Affiliation");
+    addComponent(affiliationLabel);
+    inputAffiliation = new StandardTextField();
     searchAffiliation = new Button("Search");
-    addComponent(searchAffiliation);
+    HorizontalLayout affiliationSearch = new HorizontalLayout(inputAffiliation,searchAffiliation);
+    affiliationSearch.setSpacing(true);
+    addComponent(affiliationSearch);
 
     affiliations = new Table("Affiliations");
     affiliations.setStyleName(ValoTheme.TABLE_SMALL);
