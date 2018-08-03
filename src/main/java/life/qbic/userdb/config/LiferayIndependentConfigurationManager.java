@@ -132,7 +132,7 @@ public enum LiferayIndependentConfigurationManager implements ConfigurationManag
     Properties portletConfig = new Properties();
     try {
       List<String> configs =
-          new ArrayList<String>(Arrays.asList("/Users/frieda/Desktop/testing/portlet.properties",
+          new ArrayList<String>(Arrays.asList("/home/openbis/portal/liferay-portal-6.2-ce-ga4/qbic-ext.properties","/Users/frieda/Desktop/testing/portlet.properties",
               "/home/luser/liferay-portal-6.2-ce-ga4/portlets.properties",
               "/usr/local/share/guse/portlets.properties",
               "/home/tomcat-liferay/liferay_production/portlets.properties"));
