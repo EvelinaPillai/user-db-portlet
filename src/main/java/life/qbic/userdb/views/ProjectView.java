@@ -71,9 +71,10 @@ public class ProjectView extends VerticalLayout {
     projectTable.setStyleName(ValoTheme.TABLE_SMALL);
     projectTable.addContainerProperty("Auftragsnummer", String.class, null);
     projectTable.addContainerProperty("Kurztitel", String.class, null);
-    projectTable.setColumnWidth("Name", 450);
+    projectTable.setColumnWidth("Kurztitel", 100);
     projectTable.addContainerProperty("UVB", String.class, null);
     projectTable.addContainerProperty("Studienleiter", String.class, null);
+    projectTable.setColumnWidth("Studienleiter", 150);
     projectTable.setSelectable(true);
     addComponent(projectTable);
 
@@ -90,6 +91,7 @@ public class ProjectView extends VerticalLayout {
     projectPersons.setStyleName(ValoTheme.TABLE_SMALL);
     projectPersons.addContainerProperty("Name", ComboBox.class, null);
     projectPersons.addContainerProperty("Experiment", String.class, null);
+    projectPersons.setColumnWidth("Experiment",150);
     projectPersons.addContainerProperty("Verantwortung", String.class, null); //Responsibility
     projectPersons.setColumnWidth("Verantwortung", 150);
     projectPersons.setPageLength(1);
@@ -130,7 +132,7 @@ public class ProjectView extends VerticalLayout {
     manager = new ComboBox("Projektleiter CFH", personMap.keySet()); //Project Manager
     manager.setStyleName(Styles.boxTheme);
     manager.setFilteringMode(FilteringMode.CONTAINS);
-    submitInfo = new Button("Projekt Informationen ändern"); //Change Project Information
+    submitInfo = new Button("Projektinformationen ändern"); //Change Project Information
     projectInfo.addComponent(altName);
     projectInfo.addComponent(investigator);
     projectInfo.addComponent(contact);

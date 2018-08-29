@@ -77,7 +77,7 @@ public class ProjectFilterDecorator implements FilterDecorator {
 
   @Override
   public String getAllItemsVisibleString() {
-      return "Show all";
+      return "Alle anzeigen"; //Show all
   }
 
   @Override

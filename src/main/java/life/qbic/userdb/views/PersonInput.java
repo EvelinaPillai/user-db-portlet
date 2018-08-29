@@ -72,8 +72,8 @@ public class PersonInput extends HorizontalLayout {
     userName.addValidator(
         new RegexpValidator(RegExHelper.VALID_USERNAME_REGEX, "Bitte geben Sie einen gültigen Benutzernamen ein.")); //Please input a valid username.
     left.addComponent(Styles.questionize(userName,
-    		"Universität Hohenheim Benutzeranme oder der von der CFH zur Verfügung gestellte Benutzername. Falls das Feld leer gelassen wird, wird ein Pseudoname gewählt"
-    	    		+ " welcher nicht zum Einloggen benutzt werden kannm bis ein richtiger Benutzername hinzugefügt wurde. Personen Informationen können in diesem Fall trotzdem zu Projekten und Experimenten hinzugefügt werden ",
+    		"Universität Hohenheim Benutzername oder der von der CFH zur Verfügung gestellte Benutzername. Falls das Feld leer gelassen wird, wird ein Dummy Name gewählt, "
+    	    		+ "welcher nicht zum Einloggen benutzt werden kann bis ein richtiger Benutzername hinzugefügt wurde. Personen Informationen können in diesem Fall trotzdem zu Projekten und Experimenten hinzugefügt werden.",
     	    		"Benutzername"));
 
     title = new ComboBox("Titel", titles);

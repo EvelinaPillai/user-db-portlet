@@ -45,7 +45,7 @@ public class TableOverview extends VerticalLayout {
     persons.addContainerProperty("Titel", String.class, null);
     persons.addContainerProperty("Vorname", String.class, null);
     persons.addContainerProperty("Nachname", String.class, null);
-    persons.addContainerProperty("eMail", String.class, null);
+    persons.addContainerProperty("E-Mail", String.class, null);
     persons.addContainerProperty("Telefon", String.class, null);
     persons.addContainerProperty("Zugehörigkeit", String.class, null);
     persons.addContainerProperty("Rolle", String.class, null);

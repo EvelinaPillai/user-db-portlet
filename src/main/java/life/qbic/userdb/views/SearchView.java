@@ -70,7 +70,7 @@ public class SearchView extends VerticalLayout {
     personsTable.addContainerProperty("Titel", String.class, null);
     personsTable.addContainerProperty("Vorname", String.class, null);
     personsTable.addContainerProperty("Nachname", String.class, null);
-    personsTable.addContainerProperty("eMail", String.class, null);
+    personsTable.addContainerProperty("E-Mail", String.class, null);
     personsTable.addContainerProperty("Telefon", String.class, null);
     // personsTable.addContainerProperty("(1st) Affiliation", String.class, null);
     // personsTable.addContainerProperty("Role", String.class, null);TODO maybe move this to the

@@ -37,8 +37,8 @@ public class EntryInput extends HorizontalLayout {
     userName.addValidator(
         new RegexpValidator(RegExHelper.VALID_USERNAME_REGEX, "Bitte geben Sie einen gültigen Benutzernamen ein.")); //Please input a valid username.
     addComponent(Styles.questionize(userName,
-    		"Universität Hohenheim Benutzeranme oder der von der CFH zur Verfügung gestellte Benutzername. Falls das Feld leer gelassen wird, wird ein Pseudoname gewählt"
-    		+ " welcher nicht zum Einloggen benutzt werden kannm bis ein richtiger Benutzername hinzugefügt wurde. Personen Informationen können in diesem Fall trotzdem zu Projekten und Experimenten hinzugefügt werden ",
+    		"Universität Hohenheim Benutzername oder der von der CFH zur Verfügung gestellte Benutzername. Falls das Feld leer gelassen wird, wird ein Dummy Name gewählt, "
+    		+ "welcher nicht zum Einloggen benutzt werden kann bis ein richtiger Benutzername hinzugefügt wurde. Personen Informationen können in diesem Fall trotzdem zu Projekten und Experimenten hinzugefügt werden ",
     		"Benutzername"
 //        "University Tübingen user name or user name provided by QBiC. If left empty a dummy user name is chosen "
 //            + "which cannot be used to log in until a real name is added. Person information can still be added to "

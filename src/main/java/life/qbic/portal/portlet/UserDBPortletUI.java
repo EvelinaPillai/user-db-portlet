@@ -128,7 +128,7 @@ public class UserDBPortletUI extends QBiCPortletUI {
     if (!admin && !development && !canUsePortlet()) {
       VerticalLayout rightsMissingTab = new VerticalLayout();
       rightsMissingTab.setCaption("User Database Input");
-      Label info = new Label("Ihr Benutzerkonto besitzt nicht die erforderlichen administrativen Rechte, um neue Personen in unsere Datenbank hinzuzufügen."
+      Label info = new Label("Ihr Benutzerkonto besitzt nicht die erforderlichen administrativen Rechte, um neue Personen in unsere Datenbank hinzuzufügen.\n"
     		  +"Wenn Sie der Ansicht sind, dass Sie diese Rechte haben sollten dann kontaktieren Sie uns bitte.",
           //"Your account does not have the necessary rights to add new people to our database.\n"
               //+ "If you think you should be able to do so, please contact us.",

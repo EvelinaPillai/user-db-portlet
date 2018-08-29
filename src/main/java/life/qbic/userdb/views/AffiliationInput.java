@@ -79,8 +79,8 @@ public class AffiliationInput extends FormLayout {
     organization = new TextField("Organisation");
     organization.setWidth("300px");
     organization.setRequired(true);
-    organization.setInputPrompt("...oder Name der Universitität"); //or university name
-    organization.setDescription("Organisation oder Name der Universitität");
+    organization.setInputPrompt("...oder Name der Universität"); //or university name
+    organization.setDescription("Organisation oder Name der Universität");
     addComponent(organization);
 
     institute = new ComboBox("Institut", institutes);
@@ -100,7 +100,7 @@ public class AffiliationInput extends FormLayout {
     addComponent(Styles.questionize(faculty,
     		"Fakultät des Instituts/Zugehörigkeit. Universitäre Zugehörigkeiten sowie die CFH, "
     		+"welche weder Teil von Naturwissenschaftlichen noch von Agrarwissenschaftlichen Fakultäten sind, gehören zu Zentralen Einrichtungen."
-    				+" Für außeruniversitäre Einrichtungen wählen Sie Sonstiges", 
+    				+" Für außeruniversitäre Einrichtungen wählen Sie \"Sonstiges\".", 
     				"Fakultät"));
 //        "Faculty of the institute/affiliation. University affiliations like QBiC "
 //            + "that are neither part of Medical nor Science Faculty belong to Central Units. "

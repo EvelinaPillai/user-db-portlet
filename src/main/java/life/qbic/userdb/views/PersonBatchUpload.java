@@ -87,7 +87,7 @@ public class PersonBatchUpload extends VerticalLayout {
     table.setColumnWidth("Titel", 90); //Title
     table.addContainerProperty("Vorname", String.class, null);
     table.addContainerProperty("Nachname", String.class, null);
-    table.addContainerProperty("Email", String.class, null);
+    table.addContainerProperty("E-Mail", String.class, null);
     table.addContainerProperty("Telefon", String.class, null);
     table.addContainerProperty("Zugehörigkeit", ComboBox.class, null);
     table.addContainerProperty("Rolle", ComboBox.class, null);
@@ -231,9 +231,9 @@ public class PersonBatchUpload extends VerticalLayout {
     for (Object row : table.getItemIds()) {
       int id = (int) row;
       Item item = table.getItem(id);
-      String title = (String) parseBoxCell(item, "Title");
-      String affiliation = (String) parseBoxCell(item, "Affiliation");
-      String role = (String) parseBoxCell(item, "Role");
+      String title = (String) parseBoxCell(item, "Titel");
+      String affiliation = (String) parseBoxCell(item, "Zugehörigkeit");
+      String role = (String) parseBoxCell(item, "Rolle");
       Person p = rowIDToPerson.get(id);
       p.setTitle(title);
       p.addAffiliationInfo(affiliationMap.get(affiliation), affiliation, role);
@@ -246,17 +246,17 @@ public class PersonBatchUpload extends VerticalLayout {
     for (Object row : table.getItemIds()) {
       int id = (int) row;
       Item item = table.getItem(id);
-      if (parseBoxCell(item, "Affiliation") == null) {
+      if (parseBoxCell(item, "Zugehörigkeit") == null) {
         Styles.notification("Fehlende Zugehörigkeit", "Bitte wählen Sie eine Zugehörigkeit für jede Person aus.",//"Missing Affiliation", "Please select an affiliation for each person."
             NotificationType.DEFAULT);
         return false;
       }
-      if (parseBoxCell(item, "Role") == null) {
+      if (parseBoxCell(item, "Rolle") == null) {
         Styles.notification("Fehlende Rolle", "Bitte wählen Sie eine Rolle für jede Person aus.",//"Missing Role", "Please select an affiliation role for each person.
             NotificationType.DEFAULT);
         return false;
       }
-      if (parseBoxCell(item, "Title") == null) {
+      if (parseBoxCell(item, "Titel") == null) {
         Styles.notification("Titel wird benötigt", //"Title needed",
             "Hochgeladener Titel ist unbekannt. Bitte benutzen Sie einen aus der zur Verfügung stehenden Auswahl.",
         		//"Uploaded Title is unknown. Please use one of the provided options.",
