@@ -50,7 +50,7 @@ public class AffiliationVIPTab extends FormLayout {
     this.personMap = persons;
     this.personAffiliationsInTable = affiPeople;
 
-    affiTabOrgs = new ComboBox("Affiliation", affiliations.keySet());
+    affiTabOrgs = new ComboBox("Zugehörigkeit", affiliations.keySet()); //Affiliation
     affiTabOrgs.setStyleName(ValoTheme.COMBOBOX_SMALL);
     affiTabOrgs.setFilteringMode(FilteringMode.CONTAINS);
     affiTabOrgs.addValueChangeListener(new ValueChangeListener() {
@@ -70,11 +70,11 @@ public class AffiliationVIPTab extends FormLayout {
       }
     });
 
-    head = new ComboBox("Head", persons.keySet());
+     head = new ComboBox("Leitung", persons.keySet()); // Head
     head.setStyleName(ValoTheme.COMBOBOX_SMALL);
     head.setFilteringMode(FilteringMode.CONTAINS);
     head.setVisible(false);
-    contact = new ComboBox("Contact Person", persons.keySet());
+    contact = new ComboBox("Ansprechpartner", persons.keySet()); //Contact Person
     contact.setStyleName(ValoTheme.COMBOBOX_SMALL);
     contact.setFilteringMode(FilteringMode.CONTAINS);
     contact.setVisible(false);
@@ -89,7 +89,7 @@ public class AffiliationVIPTab extends FormLayout {
     head.addValueChangeListener(personListener);
     contact.addValueChangeListener(personListener);
 
-    commitAffiTabButton = new Button("Save Contact");
+    commitAffiTabButton = new Button("Kontakt speichern"); //Save Contact"
     commitAffiTabButton.setEnabled(false);
 
     addComponent(affiTabOrgs);
@@ -97,9 +97,12 @@ public class AffiliationVIPTab extends FormLayout {
     addComponent(contact);
     commitAffiTabButton.setIcon(FontAwesome.SAVE);
     addComponent(Styles.questionize(commitAffiTabButton,
-        "Add or change records to the selected people. "
-            + "Existing people can only be replaced by a new selection, empty selections are ignored.",
-        "Save Changes"));
+    		"Verändern Sie Einträge zu ausgewählten Personen oder fügen Sie neue hinzu. "
+        +"Bereits vorhandene Personen können nur durch einen neuen Eintrag ersetzt werden, leere Einträge werden ignoriert.",
+    		//"Add or change records to the selected people. "
+            //+ "Existing people can only be replaced by a new selection, empty selections are ignored.",
+        //"Save Changes"
+        "Änderungen speichern"));
   }
 
 

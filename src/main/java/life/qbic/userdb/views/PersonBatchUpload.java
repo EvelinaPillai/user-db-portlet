@@ -73,34 +73,34 @@ public class PersonBatchUpload extends VerticalLayout {
     setSpacing(true);
 
     // file upload component
-    upload = new Upload("Upload your file here", uploader);
+    upload = new Upload("Laden Sie hier Ihre Datei hoch", uploader); //Upload your file here
     HorizontalLayout box = new HorizontalLayout();
     box.addComponent(upload);
     box.addComponent(Styles.getPopupViewContaining(getHelpComponent()));
     addComponent(box);
 
     // init person Table
-    table = new Table("People");
+    table = new Table("Personen"); //People
     table.setPageLength(1);
     table.setStyleName(ValoTheme.TABLE_SMALL);
-    table.addContainerProperty("Title", ComboBox.class, null);
-    table.setColumnWidth("Title", 90);
-    table.addContainerProperty("First", String.class, null);
-    table.addContainerProperty("Last", String.class, null);
+    table.addContainerProperty("Titel", ComboBox.class, null);
+    table.setColumnWidth("Titel", 90); //Title
+    table.addContainerProperty("Vorname", String.class, null);
+    table.addContainerProperty("Nachname", String.class, null);
     table.addContainerProperty("Email", String.class, null);
-    table.addContainerProperty("Phone", String.class, null);
-    table.addContainerProperty("Affiliation", ComboBox.class, null);
-    table.addContainerProperty("Role", ComboBox.class, null);
+    table.addContainerProperty("Telefon", String.class, null);
+    table.addContainerProperty("Zugehörigkeit", ComboBox.class, null);
+    table.addContainerProperty("Rolle", ComboBox.class, null);
     // next table
     addComponent(table);
     table.setVisible(false);
 
     // sample registration button
-    register = new Button("Register People");
+    register = new Button("Personen registrieren"); //Register People
     register.setVisible(false);
     addComponent(register);
 
-    upload.setButtonCaption("Upload");
+    upload.setButtonCaption("Hochladen"); //Upload
     // Listen for events regarding the success of upload.
     upload.addFailedListener(uploader);
     upload.addSucceededListener(uploader);
@@ -114,14 +114,14 @@ public class PersonBatchUpload extends VerticalLayout {
         String uploadError = uploader.getError();
         File file = uploader.getFile();
         if (file.getPath().endsWith("up_")) {
-          String msg = "No file selected.";
+          String msg = "Keine Datein ausgewählt"; //No file selected.
           logger.warn(msg);
-          Styles.notification("Failed to read file.", msg, NotificationType.ERROR);
+          Styles.notification("Das Lesen der Datei ist fehlgeschlagen.", msg, NotificationType.ERROR); //Failed to read file
           if (!file.delete())
             logger.error("uploaded tmp file " + file.getAbsolutePath() + " could not be deleted!");
         } else {
           if (uploadError == null || uploadError.isEmpty()) {
-            String msg = "Upload successful!";
+            String msg = "Das Hochladen war erfolgreich!"; //Upload successful!
             logger.info(msg);
             try {
               setRegEnabled(false);
@@ -130,7 +130,7 @@ public class PersonBatchUpload extends VerticalLayout {
                 fillTable(parser.getPeople());
               } else {
                 String error = parser.getError();
-                Styles.notification("Failed to read file.", error, NotificationType.ERROR);
+                Styles.notification("Das Lesen der Datei ist fehlgeschlagen.", error, NotificationType.ERROR); //Failed to read file.
                 if (!file.delete())
                   logger.error(
                       "uploaded tmp file " + file.getAbsolutePath() + " could not be deleted!");
@@ -139,7 +139,7 @@ public class PersonBatchUpload extends VerticalLayout {
               e.printStackTrace();
             }
           } else {
-            Styles.notification("Failed to upload file.", uploadError, NotificationType.ERROR);
+            Styles.notification("Das Hochladen ist fehlgeschlagen.", uploadError, NotificationType.ERROR);//Failed to upload file.
             if (!file.delete())
               logger
                   .error("uploaded tmp file " + file.getAbsolutePath() + " could not be deleted!");
@@ -154,10 +154,10 @@ public class PersonBatchUpload extends VerticalLayout {
     VerticalLayout v = new VerticalLayout();
     v.setSpacing(true);
     Label l = new Label(
-        "Upload a tab-separated values file containing information about multiple people.");
+        "Laden Sie eine TAB-separierte Datei hoch, welche Informationen über mehrere Personen enthält."); //Upload a tab-separated values file containing information about multiple people.
     l.setWidth("300px");
     v.addComponent(l);
-    Button button = new Button("Download Example");
+    Button button = new Button("Beispiel herunterladen"); //Download Example
     v.addComponent(button);
 
     final File example =
@@ -247,18 +247,19 @@ public class PersonBatchUpload extends VerticalLayout {
       int id = (int) row;
       Item item = table.getItem(id);
       if (parseBoxCell(item, "Affiliation") == null) {
-        Styles.notification("Missing Affiliation", "Please select an affiliation for each person.",
+        Styles.notification("Fehlende Zugehörigkeit", "Bitte wählen Sie eine Zugehörigkeit für jede Person aus.",//"Missing Affiliation", "Please select an affiliation for each person."
             NotificationType.DEFAULT);
         return false;
       }
       if (parseBoxCell(item, "Role") == null) {
-        Styles.notification("Missing Role", "Please select an affiliation role for each person.",
+        Styles.notification("Fehlende Rolle", "Bitte wählen Sie eine Rolle für jede Person aus.",//"Missing Role", "Please select an affiliation role for each person.
             NotificationType.DEFAULT);
         return false;
       }
       if (parseBoxCell(item, "Title") == null) {
-        Styles.notification("Title needed",
-            "Uploaded Title is unknown. Please use one of the provided options.",
+        Styles.notification("Titel wird benötigt", //"Title needed",
+            "Hochgeladener Titel ist unbekannt. Bitte benutzen Sie einen aus der zur Verfügung stehenden Auswahl.",
+        		//"Uploaded Title is unknown. Please use one of the provided options.",
             NotificationType.DEFAULT);
         return false;
       }

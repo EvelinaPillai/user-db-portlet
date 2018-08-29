@@ -51,27 +51,27 @@ public class SearchView extends VerticalLayout {
     setSpacing(true);
     setMargin(true);
 
-    setCaption("Search for entries in the Database");
+    setCaption("Nach Einträgen in der Datenbank suchen"); //Search for entries in the Database
         
    
-    Label personLabel = new Label("Search for Person");
+    Label personLabel = new Label("Nach Personen suchen"); //Search for Person
     addComponent(personLabel);
     inputPerson = new StandardTextField();
-    searchPerson = new Button("Search");
+    searchPerson = new Button("Suche"); //Search
     HorizontalLayout searchFields = new HorizontalLayout(inputPerson, searchPerson);
     searchFields.setSpacing(true);
     addComponent(searchFields);
     
-    personsTable = new Table("People");
+    personsTable = new Table("Person"); //People
     personsTable.setPageLength(1);
     personsTable.setStyleName(ValoTheme.TABLE_SMALL);
     // persons.addContainerProperty("ID", Integer.class, null);
     // persons.addContainerProperty("User", String.class, null);
-    personsTable.addContainerProperty("Title", String.class, null);
-    personsTable.addContainerProperty("First", String.class, null);
-    personsTable.addContainerProperty("Last", String.class, null);
+    personsTable.addContainerProperty("Titel", String.class, null);
+    personsTable.addContainerProperty("Vorname", String.class, null);
+    personsTable.addContainerProperty("Nachname", String.class, null);
     personsTable.addContainerProperty("eMail", String.class, null);
-    personsTable.addContainerProperty("Phone", String.class, null);
+    personsTable.addContainerProperty("Telefon", String.class, null);
     // personsTable.addContainerProperty("(1st) Affiliation", String.class, null);
     // personsTable.addContainerProperty("Role", String.class, null);TODO maybe move this to the
     // next table
@@ -86,7 +86,7 @@ public class SearchView extends VerticalLayout {
         Object id = personsTable.getValue();
         if (id != null) {
           Person p = listIDToPerson.get(id);
-          affiliationsOfPerson.setCaption("Affiliations of " + p.getFirstName() + " " + p.getLastName());
+          affiliationsOfPerson.setCaption("Zugehörigkeiten von " + p.getFirstName() + " " + p.getLastName()); //Affiliations of 
           List<Affiliation> affiliations = p.getAffiliations();
 
           affiliationsOfPerson.setVisible(true);
@@ -95,6 +95,7 @@ public class SearchView extends VerticalLayout {
             List<Object> row = new ArrayList<Object>();
             Affiliation a = affiliations.get(i);
             row.add(a.getGroupName());
+            row.add(a.getAcronym());
             row.add(a.getOrganization());
             row.add(a.getInstitute());
             row.add(a.getFaculty());
@@ -111,37 +112,37 @@ public class SearchView extends VerticalLayout {
     affiliationsOfPerson.setVisible(false);
     affiliationsOfPerson.setStyleName(ValoTheme.TABLE_SMALL);
     // affiliationsOfPerson.addContainerProperty("ID", Integer.class, null);
-    affiliationsOfPerson.addContainerProperty("Group", String.class, null);
-    // affiliationsOfPerson.addContainerProperty("acronym", String.class, null);
-    affiliationsOfPerson.addContainerProperty("Organization", String.class, null);
-    affiliationsOfPerson.addContainerProperty("Institute", String.class, null);
-    affiliationsOfPerson.addContainerProperty("Faculty", String.class, null);
+    affiliationsOfPerson.addContainerProperty("Gruppe", String.class, null);
+    affiliationsOfPerson.addContainerProperty("Akronym", String.class, null);
+    affiliationsOfPerson.addContainerProperty("Organisation", String.class, null);
+    affiliationsOfPerson.addContainerProperty("Institut", String.class, null);
+    affiliationsOfPerson.addContainerProperty("Fakultät", String.class, null);
     // affiliationsOfPerson.addContainerProperty("contactPerson", String.class, null);
-    affiliationsOfPerson.addContainerProperty("Street", String.class, null);
-    affiliationsOfPerson.addContainerProperty("ZIP", String.class, null);
+    affiliationsOfPerson.addContainerProperty("Straße", String.class, null);
+    affiliationsOfPerson.addContainerProperty("PLZ", String.class, null);
     addComponent(affiliationsOfPerson);
 
    
    
-    Label affiliationLabel = new Label("Search for Affiliation");
+    Label affiliationLabel = new Label("Nach Zugehörigkeiten suchen"); //Search for Affiliation
     addComponent(affiliationLabel);
     inputAffiliation = new StandardTextField();
-    searchAffiliation = new Button("Search");
+    searchAffiliation = new Button("Suche"); //Search
     HorizontalLayout affiliationSearch = new HorizontalLayout(inputAffiliation,searchAffiliation);
     affiliationSearch.setSpacing(true);
     addComponent(affiliationSearch);
 
-    affiliations = new Table("Affiliations");
+    affiliations = new Table("Zugehörigkeiten"); //Affiliations
     affiliations.setStyleName(ValoTheme.TABLE_SMALL);
     // affiliations.addContainerProperty("ID", Integer.class, null);
-    affiliations.addContainerProperty("Group", String.class, null);
-    // affiliations.addContainerProperty("acronym", String.class, null);
-    affiliations.addContainerProperty("Organization", String.class, null);
-    affiliations.addContainerProperty("Institute", String.class, null);
-    affiliations.addContainerProperty("Faculty", String.class, null);
+    affiliations.addContainerProperty("Gruppe", String.class, null);
+    affiliations.addContainerProperty("Akronym", String.class, null);
+    affiliations.addContainerProperty("Organisation", String.class, null);
+    affiliations.addContainerProperty("Institut", String.class, null);
+    affiliations.addContainerProperty("Fakultät", String.class, null);
     // affiliations.addContainerProperty("contactPerson", String.class, null);
-    affiliations.addContainerProperty("Street", String.class, null);
-    affiliations.addContainerProperty("ZIP", String.class, null);
+    affiliations.addContainerProperty("Straße", String.class, null);
+    affiliations.addContainerProperty("PLZ", String.class, null);
     affiliations.setPageLength(1);
     addComponent(affiliations);
   }
@@ -192,6 +193,7 @@ public class SearchView extends VerticalLayout {
       List<Object> row = new ArrayList<Object>();
       Affiliation a = foundAffiliations.get(i);
       row.add(a.getGroupName());
+      row.add(a.getAcronym());
       row.add(a.getOrganization());
       row.add(a.getInstitute());
       row.add(a.getFaculty());

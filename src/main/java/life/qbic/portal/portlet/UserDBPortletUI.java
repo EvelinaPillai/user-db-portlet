@@ -78,7 +78,7 @@ public class UserDBPortletUI extends QBiCPortletUI {
 
   private IOpenBisClient openbis;
   private final boolean testMode = false;
-  private final boolean development = true;
+  private final boolean development = false;
 
   @Override
   protected Layout getPortletContent(final VaadinRequest request) {
@@ -128,9 +128,10 @@ public class UserDBPortletUI extends QBiCPortletUI {
     if (!admin && !development && !canUsePortlet()) {
       VerticalLayout rightsMissingTab = new VerticalLayout();
       rightsMissingTab.setCaption("User Database Input");
-      Label info = new Label(
-          "Your account does not have the necessary rights to add new people to our database.\n"
-              + "If you think you should be able to do so, please contact us.",
+      Label info = new Label("Ihr Benutzerkonto besitzt nicht die erforderlichen administrativen Rechte, um neue Personen in unsere Datenbank hinzuzufügen."
+    		  +"Wenn Sie der Ansicht sind, dass Sie diese Rechte haben sollten dann kontaktieren Sie uns bitte.",
+          //"Your account does not have the necessary rights to add new people to our database.\n"
+              //+ "If you think you should be able to do so, please contact us.",
           ContentMode.PREFORMATTED);
       rightsMissingTab.addComponent(info);
       options.addTab(rightsMissingTab, "Information");
@@ -150,14 +151,14 @@ public class UserDBPortletUI extends QBiCPortletUI {
 
       PersonInput addUserTab = new PersonInput(titleEnums, affiMap, affiliationRoles,
           new AffiliationInput(instituteNames, facultyEnums, personMap));
-      options.addTab(addUserTab, "New Person");
+      options.addTab(addUserTab, "Neue Person"); //"New Person"
 
       AffiliationInput addAffilTab = new AffiliationInput(instituteNames, facultyEnums, personMap);
-      options.addTab(addAffilTab, "New Affiliation");
+      options.addTab(addAffilTab, "Neue Zugehörigkeit"); //"New Affiliation"
 
 
       SearchView searchView = new SearchView();
-      options.addTab(searchView, "Search Entries");
+      options.addTab(searchView, "Einträge durchsuchen"); //"Search Entries"
 
       List<Affiliation> affiTable = dbControl.getAffiliationTable();
       Map<Integer, Pair<String, String>> affiPeople = new HashMap<Integer, Pair<String, String>>();
@@ -168,14 +169,14 @@ public class UserDBPortletUI extends QBiCPortletUI {
       }
 
       PersonBatchUpload batchTab = new PersonBatchUpload(titleEnums, affiliationRoles, affiMap);
-      options.addTab(batchTab, "Upload Person Table");
+      options.addTab(batchTab, "Personen-Tabelle hochladen"); //"Upload Person Table"
 
       AffiliationVIPTab vipTab = new AffiliationVIPTab(personMap, affiMap, affiPeople);
-      options.addTab(vipTab, "Edit Affiliation VIPs");
+      options.addTab(vipTab, "Zugehörigkeit VIPs editieren"); //"Edit Affiliation VIPs"
 
       MultiAffiliationTab multiAffilTab =
           new MultiAffiliationTab(personMap, affiMap, affiliationRoles);
-      options.addTab(multiAffilTab, "Additional Person-Affiliations");
+      options.addTab(multiAffilTab, "Zusätzliche Personen-Zugehörigkeiten"); //"Additional Person-Affiliations"
       if (!admin) {
         options.getTab(3).setEnabled(false);
         options.getTab(4).setEnabled(false);
@@ -211,7 +212,7 @@ public class UserDBPortletUI extends QBiCPortletUI {
       }
 
       ProjectView projectView = new ProjectView(userProjects.values(), openbis, personMap);
-      options.addTab(projectView, "Projects");
+      options.addTab(projectView, "Projekte"); //Projects
       options.getTab(5).setEnabled(!userProjects.isEmpty());
 
       initPortletToDBFunctionality(addAffilTab, addUserTab, batchTab, multiAffilTab, vipTab,
@@ -291,9 +292,10 @@ public class UserDBPortletUI extends QBiCPortletUI {
           if (registered.isEmpty())
             successfulCommit();
           else {
-            Styles.notification("Person already registered",
+            Styles.notification("Person ist bereits registriert", //"Person already registered",
                 StringUtils.join(registered, ", ")
-                    + " had a username or email already registered in our database! They were skipped in the registration process.",
+                    + " hat bereits einen Benutzernamen oder eine E-Mail in unserer Datenbank! Daher werden sie im Registrierungsprozess übersprungen.", 
+                    //" had a username or email already registered in our database! They were skipped in the registration process.",
                 NotificationType.DEFAULT);
           }
         }
@@ -427,7 +429,7 @@ public class UserDBPortletUI extends QBiCPortletUI {
           if (dbControl.addNewAffiliation(addAffilTab.getAffiliation()) > -1)
             successfulCommit();
           else
-            commitError("There has been an error.");
+            commitError("Ein Fehler ist aufgetreten."); //"There has been an error."
         } else
           inputError();
       }
@@ -475,18 +477,19 @@ public class UserDBPortletUI extends QBiCPortletUI {
             if (affiID > -1)
               successfulCommit();
             else
-              commitError("There has been an error while adding the new affiliation.");
+              commitError("Ein Fehler ist während des Hinzufügens einer neuen Zugehörigkeit aufgetreten."); //There has been an error while adding the new affiliation.
             p.setAffiliationID(affiID);
           }
           if (dbControl.personExists(p)) {
-            Styles.notification("Person already registered",
-                "A person with the Username or E-Mail you selected is already registered in our database!",
+            Styles.notification("Person ist bereits registriert", //"Person already registered"
+                "Eine Person mit diesem Benutzernamen oder dieser E-Mail ist bereits in unserer Datenbank registriert!",
+            		//"A person with the Username or E-Mail you selected is already registered in our database!",
                 NotificationType.ERROR);
           } else {
             if (dbControl.addNewPerson(p))
               successfulCommit();
             else
-              commitError("There has been an error while adding a new person.");
+              commitError("Ein Fehler ist während des Hinzufügens einer neuen Person aufgetreten."); //There has been an error while adding a new person.
           }
         } else
           inputError();
@@ -503,7 +506,7 @@ public class UserDBPortletUI extends QBiCPortletUI {
               multiAffilTab.getChangedAndNewConnections()))
             successfulCommit();
           else
-            commitError("There has been an error.");
+            commitError("Ein Fehler ist aufgetreten"); //There has been an error.
         } else
           inputError();
       }
@@ -551,7 +554,8 @@ public class UserDBPortletUI extends QBiCPortletUI {
   }
 
   private void successfulCommit() {
-    Styles.notification("Data added", "Data has been successfully added to the database!",
+    Styles.notification("Daten hinzugefügt","Die Daten wurden erfolgreich zur Datenbank hinzugefügt.", 
+    		//"Data added", "Data has been successfully added to the database!
         NotificationType.SUCCESS);
     // wait a bit and reload tabs
     try {
@@ -564,12 +568,13 @@ public class UserDBPortletUI extends QBiCPortletUI {
   }
 
   private void inputError() {
-    Styles.notification("Data Incomplete", "Please fill in all required fields correctly.",
+    Styles.notification("Daten unvollständig", "Bitte füllen Sie alle benötigten Felder korrekt aus.",
+//    		"Data Incomplete", "Please fill in all required fields correctly.",
         NotificationType.DEFAULT);
   }
 
   private void commitError(String reason) {
-    Styles.notification("There has been an error.", reason, NotificationType.ERROR);
+    Styles.notification("Ein Fehler ist aufgetreten", reason, NotificationType.ERROR); //There has been an error.
   }
 
   private Config readConfig() {

@@ -38,34 +38,34 @@ public class TableOverview extends VerticalLayout {
   public TableOverview(List<Person> personData, List<Affiliation> affiliationData) {
     tabs = new TabSheet();
     
-    persons = new Table("People");
+    persons = new Table("Personen"); //People
     persons.setStyleName(ValoTheme.TABLE_SMALL);
 //    persons.addContainerProperty("ID", Integer.class, null);
 //    persons.addContainerProperty("User", String.class, null);
-    persons.addContainerProperty("Title", String.class, null);
-    persons.addContainerProperty("First", String.class, null);
-    persons.addContainerProperty("Last", String.class, null);
+    persons.addContainerProperty("Titel", String.class, null);
+    persons.addContainerProperty("Vorname", String.class, null);
+    persons.addContainerProperty("Nachname", String.class, null);
     persons.addContainerProperty("eMail", String.class, null);
-    persons.addContainerProperty("Phone", String.class, null);
-    persons.addContainerProperty("Affiliation", String.class, null);
-    persons.addContainerProperty("Role", String.class, null);
-    tabs.addTab(persons, "People");
+    persons.addContainerProperty("Telefon", String.class, null);
+    persons.addContainerProperty("Zugehörigkeit", String.class, null);
+    persons.addContainerProperty("Rolle", String.class, null);
+    tabs.addTab(persons, "Personen"); //People
 
-    affiliations = new Table("Affiliations");
+    affiliations = new Table("Zugehörigkeiten"); //Affiliations
     affiliations.setStyleName(ValoTheme.TABLE_SMALL);
 //    affiliations.addContainerProperty("ID", Integer.class, null);
-    affiliations.addContainerProperty("group", String.class, null);
-    // affiliations.addContainerProperty("acronym", String.class, null);
-    affiliations.addContainerProperty("organization", String.class, null);
-    affiliations.addContainerProperty("institute", String.class, null);
-    affiliations.addContainerProperty("faculty", String.class, null);
+    affiliations.addContainerProperty("Gruppe", String.class, null);
+    affiliations.addContainerProperty("Akronym", String.class, null);
+    affiliations.addContainerProperty("organisation", String.class, null);
+    affiliations.addContainerProperty("Institut", String.class, null);
+    affiliations.addContainerProperty("Fakultät", String.class, null);
     // affiliations.addContainerProperty("contactPerson", String.class, null);
-    affiliations.addContainerProperty("street", String.class, null);
-    affiliations.addContainerProperty("zipCode", String.class, null);
+    affiliations.addContainerProperty("Straße", String.class, null);
+    affiliations.addContainerProperty("Postleitzahl", String.class, null);
     // affiliations.addContainerProperty("city", String.class, null);
     // affiliations.addContainerProperty("country", String.class, null);
     // affiliations.addContainerProperty("webpage", String.class, null);
-    tabs.addTab(affiliations, "Organizations");
+    tabs.addTab(affiliations, "Organisationen");
     addComponent(tabs);
     
     for (int i = 0; i < personData.size(); i++) {
@@ -94,7 +94,7 @@ public class TableOverview extends VerticalLayout {
       Affiliation a = affiliationData.get(i);
 //      row.add(a.getID());
       row.add(a.getGroupName());
-      // row.add(a.getAcronym());
+      row.add(a.getAcronym());
       row.add(a.getOrganization());
       row.add(a.getInstitute());
       row.add(a.getFaculty());

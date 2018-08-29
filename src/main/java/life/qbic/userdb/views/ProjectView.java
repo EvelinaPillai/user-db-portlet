@@ -66,14 +66,14 @@ public class ProjectView extends VerticalLayout {
 
     this.personMap = personMap;
 
-    projectTable = new FilterTable("Projects");
+    projectTable = new FilterTable("Projekte"); //Projects
     projectTable.setPageLength(Math.min(15, collection.size()));
     projectTable.setStyleName(ValoTheme.TABLE_SMALL);
-    projectTable.addContainerProperty("Sub-Project", String.class, null);
-    projectTable.addContainerProperty("Short Title", String.class, null);
-    projectTable.setColumnWidth("Name", 300);
-    projectTable.addContainerProperty("Project", String.class, null);
-    projectTable.addContainerProperty("Principal Investigator", String.class, null);
+    projectTable.addContainerProperty("Auftragsnummer", String.class, null);
+    projectTable.addContainerProperty("Kurztitel", String.class, null);
+    projectTable.setColumnWidth("Name", 450);
+    projectTable.addContainerProperty("UVB", String.class, null);
+    projectTable.addContainerProperty("Studienleiter", String.class, null);
     projectTable.setSelectable(true);
     addComponent(projectTable);
 
@@ -86,16 +86,16 @@ public class ProjectView extends VerticalLayout {
 
     initProjectInfos(collection);
 
-    projectPersons = new Table("Experiment Collaborators (optional)");
+    projectPersons = new Table("Mitarbeiter des Experiments (optional)"); //Experiment Collaborators (optional)
     projectPersons.setStyleName(ValoTheme.TABLE_SMALL);
     projectPersons.addContainerProperty("Name", ComboBox.class, null);
     projectPersons.addContainerProperty("Experiment", String.class, null);
-    projectPersons.addContainerProperty("Responsibility", String.class, null);
-    projectPersons.setColumnWidth("Responsibility", 150);
+    projectPersons.addContainerProperty("Verantwortung", String.class, null); //Responsibility
+    projectPersons.setColumnWidth("Verantwortung", 150);
     projectPersons.setPageLength(1);
     addComponent(projectPersons);
 
-    submitPersons = new Button("Submit Experiment");
+    submitPersons = new Button("Verantwortung zuweisen"); //Submit Experiment
     addComponent(submitPersons);
   }
 
@@ -118,19 +118,19 @@ public class ProjectView extends VerticalLayout {
 
     VerticalLayout projectInfo = new VerticalLayout();
     projectInfo.setVisible(false);
-    altName = new TextField("Short Title");
+    altName = new TextField("Kurztitel"); //Short Title
     altName.setWidth("300px");
     altName.setStyleName(Styles.fieldTheme);
-    investigator = new ComboBox("Principal Investigator", personMap.keySet());
+    investigator = new ComboBox("Studienleiter", personMap.keySet()); //Principal Investigator
     investigator.setStyleName(Styles.boxTheme);
     investigator.setFilteringMode(FilteringMode.CONTAINS);
-    contact = new ComboBox("Contact Person", personMap.keySet());
+    contact = new ComboBox("Ansprechpartner", personMap.keySet()); //Contact Person
     contact.setStyleName(Styles.boxTheme);
     contact.setFilteringMode(FilteringMode.CONTAINS);
-    manager = new ComboBox("Project Manager", personMap.keySet());
+    manager = new ComboBox("Projektleiter CFH", personMap.keySet()); //Project Manager
     manager.setStyleName(Styles.boxTheme);
     manager.setFilteringMode(FilteringMode.CONTAINS);
-    submitInfo = new Button("Change Project Information");
+    submitInfo = new Button("Projekt Informationen ändern"); //Change Project Information
     projectInfo.addComponent(altName);
     projectInfo.addComponent(investigator);
     projectInfo.addComponent(contact);
@@ -290,7 +290,7 @@ public class ProjectView extends VerticalLayout {
     row.add(info.getInvestigator());
     projectTable.addItem(row.toArray(new Object[row.size()]), code);
     // sort ascending by Project ID
-    projectTable.sort(new Object[] {"Sub-Project"}, new boolean[] {true});
+    projectTable.sort(new Object[] {"Auftragsnummer"}, new boolean[] {true}); 
   }
 
 }

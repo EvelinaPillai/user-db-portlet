@@ -73,13 +73,13 @@ public class MultiAffiliationTab extends VerticalLayout {
     person.setFilteringMode(FilteringMode.CONTAINS);
     person.setNullSelectionAllowed(false);
     addComponent(person);
-    organization = new ComboBox("Organization", affiliations.keySet());
+    organization = new ComboBox("Organisation", affiliations.keySet());
     organization.setNullSelectionAllowed(false);
     organization.setStyleName(ValoTheme.COMBOBOX_SMALL);
     organization.setFilteringMode(FilteringMode.CONTAINS);
     addComponent(organization);
 
-    addToTable = new Button("Add to Preview");
+    addToTable = new Button("Zur Vorschau hinzufügen"); //Add to Preview
     addComponent(addToTable);
     addToTable.setEnabled(false);
 
@@ -88,16 +88,16 @@ public class MultiAffiliationTab extends VerticalLayout {
     // table.addContainerProperty("Title", String.class, null);
     // table.addContainerProperty("First Name", String.class, null);
     // table.addContainerProperty("Family Name", String.class, null);
-    table.addContainerProperty("Affiliation", String.class, null);
-    table.setColumnWidth("Affiliation", 250);
-    table.addContainerProperty("Role", ComboBox.class, null);
+    table.addContainerProperty("Zugehörigkeit", String.class, null); //Affiliation
+    table.setColumnWidth("Zugehörigkeit", 250);
+    table.addContainerProperty("Rolle", ComboBox.class, null); //Role
     // table.addContainerProperty("Main Contact", CheckBox.class, null);
-    table.addContainerProperty("Remove", Button.class, null);
+    table.addContainerProperty("Löschen", Button.class, null); //Remove
     table.setImmediate(true);
     table.setVisible(false);
     addComponent(table);
 
-    commit = new Button("Save Changes");
+    commit = new Button("Änderungen speichern"); //Save Changes
     addComponent(commit);
     // tabs.addTab(personTab, "Edit Person");
 
@@ -120,7 +120,7 @@ public class MultiAffiliationTab extends VerticalLayout {
   public List<PersonAffiliationConnectionInfo> getChangedAndNewConnections() {
     List<PersonAffiliationConnectionInfo> res = new ArrayList<PersonAffiliationConnectionInfo>();
     for (Object affiliationID : table.getItemIds()) {
-      ComboBox roleBox = (ComboBox) table.getItem(affiliationID).getItemProperty("Role").getValue();
+      ComboBox roleBox = (ComboBox) table.getItem(affiliationID).getItemProperty("Rolle").getValue(); //Role
       // String first = (String) table.getItem(id).getItemProperty("First Name").getValue();
       // String last = (String) table.getItem(id).getItemProperty("Family Name").getValue();
       // String name = first + " " + last;
@@ -141,7 +141,7 @@ public class MultiAffiliationTab extends VerticalLayout {
     String first = p.getFirstName();
     String last = p.getLastName();
     currentPerson = first + " " + last;
-    table.setCaption("Affiliations of " + title + " " + first + " " + last);
+    table.setCaption("Zugehörigkeiten von " + title + " " + first + " " + last); //Affiliations of
     addDataToTable(personsWithAffiliations);
 
     table.setVisible(true);
@@ -166,7 +166,7 @@ public class MultiAffiliationTab extends VerticalLayout {
         roleInput.setStyleName(ValoTheme.COMBOBOX_SMALL);
         roleInput.setValue(role);
         row.add(roleInput);
-        Button delete = new Button("Remove");
+        Button delete = new Button("Löschen");//Remove
         row.add(delete);
         delete.setData(i);
         delete.addClickListener(new Button.ClickListener() {

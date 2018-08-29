@@ -67,52 +67,51 @@ public class PersonInput extends HorizontalLayout {
     this.affiInput.hideRegisterButton();
     this.affiInput.setVisible(false);
 
-    userName = new TextField("Username");
+    userName = new TextField("Benutzername"); //Username
     // userName.setRequired(true);
     userName.addValidator(
-        new RegexpValidator(RegExHelper.VALID_USERNAME_REGEX, "Please input a valid username."));
+        new RegexpValidator(RegExHelper.VALID_USERNAME_REGEX, "Bitte geben Sie einen gültigen Benutzernamen ein.")); //Please input a valid username.
     left.addComponent(Styles.questionize(userName,
-        "University Tübingen user name or user name provided by QBiC. If left empty a dummy user name is chosen "
-            + "which cannot be used to log in until a real name is added. Person information can still be added to "
-            + "projects or experiments in that case.",
-        "User Name"));
+    		"Universität Hohenheim Benutzeranme oder der von der CFH zur Verfügung gestellte Benutzername. Falls das Feld leer gelassen wird, wird ein Pseudoname gewählt"
+    	    		+ " welcher nicht zum Einloggen benutzt werden kannm bis ein richtiger Benutzername hinzugefügt wurde. Personen Informationen können in diesem Fall trotzdem zu Projekten und Experimenten hinzugefügt werden ",
+    	    		"Benutzername"));
 
-    title = new ComboBox("Title", titles);
+    title = new ComboBox("Titel", titles);
     title.setRequired(true);
     title.setStyleName(ValoTheme.COMBOBOX_SMALL);
     title.setNullSelectionAllowed(false);
     left.addComponent(title);
 
-    first = new TextField("First Name");
+    first = new TextField("Vorname");
     first.setRequired(true);
-    first.addValidator(new RegexpValidator(RegExHelper.VALID_NAME_REGEX, "Please input a valid name."));
+    first.addValidator(new RegexpValidator(RegExHelper.VALID_NAME_REGEX, "Bitte tragen Sie einen gültigen Namen ein."));
     left.addComponent(first);
 
-    last = new TextField("Last Name");
+    last = new TextField("Nachname");
     last.setRequired(true);
-    last.addValidator(new RegexpValidator(RegExHelper.VALID_NAME_REGEX, "Please input a valid name."));
+    last.addValidator(new RegexpValidator(RegExHelper.VALID_NAME_REGEX, "Bitte tragen Sie einen gültigen Namen ein."));
     left.addComponent(last);
 
     eMail = new TextField("E-Mail");
     eMail.setRequired(true);
     eMail.addValidator(new RegexpValidator(RegExHelper.VALID_EMAIL_ADDRESS_REGEX,
-        "Please input a valid e-mail address."));
+    		"Bitte geben Sie eine gültige E-Mail Adresse ein."));
     left.addComponent(eMail);
 
-    phone = new TextField("Phone");
+    phone = new TextField("Telefon");
     left.addComponent(phone);
 
-    affiliation = new ComboBox("Affiliation", affiliations.keySet());
+    affiliation = new ComboBox("Zugehörigkeit", affiliations.keySet());
     // affiliation.setNullSelectionAllowed(false);
     affiliation.setRequired(true);
     affiliation.setFilteringMode(FilteringMode.CONTAINS);
     affiliation.setStyleName(ValoTheme.COMBOBOX_SMALL);
     left.addComponent(Styles.questionize(affiliation,
-        "Work group or organization this person is part of. If it does not exist in the system "
-            + "a \"New Affiliation\" has to be created first. Additional Affiliations and roles can be set in the next Tab.",
-        "Affiliation"));
+    		"Arbeitsgruppe oder Organisation in welche die Person zugehört. Falls noch keine im System vorhanden ist, muss zuerst eine \"Neue Zugehörigkeit\" erstellt werden. "
+    	    		+"Zusätzliche Zugehörigkeiten und Rollen können im Reiter \"Zusätzliche Personen-Zugehörigkeiten\" gesetzt werden.",
+        "Zugehörigkeit"));
 
-    newAffiliation = new CheckBox("New Affiliation");
+    newAffiliation = new CheckBox("Neue Zugehörigkeit");
     left.addComponent(newAffiliation);
     newAffiliation.addValueChangeListener(new ValueChangeListener() {
 
@@ -124,13 +123,13 @@ public class PersonInput extends HorizontalLayout {
       }
     });
 
-    role = new ComboBox("Role", roles);
+    role = new ComboBox("Rolle", roles); //Role
     role.setRequired(true);
     role.setStyleName(ValoTheme.COMBOBOX_SMALL);
     role.setNullSelectionAllowed(false);
     left.addComponent(role);
 
-    commit = new Button("Save New User");
+    commit = new Button("Benutzer registrieren"); //Save New User
     left.addComponent(commit);
 
     addComponent(left);

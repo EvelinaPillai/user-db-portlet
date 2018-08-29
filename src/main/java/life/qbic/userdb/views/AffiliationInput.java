@@ -63,86 +63,93 @@ public class AffiliationInput extends FormLayout {
 
     this.personMap = personMap;
 
-    groupName = new TextField("Group Name");
+    groupName = new TextField("Gruppenname"); //Group Name
     groupName.setWidth("300px");
     addComponent(groupName);
 
-    acronym = new TextField("Acronym");
+    acronym = new TextField("Akronym");
     acronym.setWidth("300px");
     addComponent(Styles.questionize(acronym,
-        "Short acronym of the lowest level of this affiliation, "
-            + "e.g. of the group if specified or of the institute if group field is left empty.",
-        "Acronym"));
+        "Abkürzung der niedrigsten Ebene dieser Zugehörigkeit, "
+    		+ "z.B. der Gruppe falls diese angegeben wurde oder des Instituts falls das Gruppenfeld leer steht.",
+//        "Short acronym of the lowest level of this affiliation, "
+//            + "e.g. of the group if specified or of the institute if group field is left empty.",
+        "Akronym"));
 
-    organization = new TextField("Organization");
+    organization = new TextField("Organisation");
     organization.setWidth("300px");
     organization.setRequired(true);
-    organization.setInputPrompt("...or university name");
-    organization.setDescription("Organization or University Name");
+    organization.setInputPrompt("...oder Name der Universitität"); //or university name
+    organization.setDescription("Organisation oder Name der Universitität");
     addComponent(organization);
 
-    institute = new ComboBox("Institute", institutes);
+    institute = new ComboBox("Institut", institutes);
     institute.setWidth("300px");
     institute.setNewItemsAllowed(true);
     institute.setStyleName(ValoTheme.COMBOBOX_SMALL);
     institute.setFilteringMode(FilteringMode.CONTAINS);
     // institute.setRequired(true);
-    addComponent(Styles.questionize(institute, "Select existing institutes or input a new one.",
-        "Institute"));
+    addComponent(Styles.questionize(institute,"Wählen Sie ein bereits vorhandenes Institut oder tragen Sie ein neues ein.",  
+    		//"Select existing institutes or input a new one.",
+        "Institut"));
 
-    faculty = new ComboBox("Faculty", faculties);
+    faculty = new ComboBox("Fakultät", faculties); //Faculty
     faculty.setRequired(true);
     faculty.setStyleName(ValoTheme.COMBOBOX_SMALL);
     faculty.setWidth("300px");
     addComponent(Styles.questionize(faculty,
-        "Faculty of the institute/affiliation. University affiliations like QBiC "
-            + "that are neither part of Medical nor Science Faculty belong to Central Units. "
-            + "For non-university affiliations select Other.",
-        "Faculty"));
+    		"Fakultät des Instituts/Zugehörigkeit. Universitäre Zugehörigkeiten sowie die CFH, "
+    		+"welche weder Teil von Naturwissenschaftlichen noch von Agrarwissenschaftlichen Fakultäten sind, gehören zu Zentralen Einrichtungen."
+    				+" Für außeruniversitäre Einrichtungen wählen Sie Sonstiges", 
+    				"Fakultät"));
+//        "Faculty of the institute/affiliation. University affiliations like QBiC "
+//            + "that are neither part of Medical nor Science Faculty belong to Central Units. "
+//            + "For non-university affiliations select Other.",
+//        "Faculty"));
 
-    contactPerson = new ComboBox("Contact Person", personMap.keySet());
+    contactPerson = new ComboBox("Ansprechpartner", personMap.keySet()); //Contact Person
     contactPerson.setWidth("300px");
     contactPerson.setFilteringMode(FilteringMode.CONTAINS);
     contactPerson.setStyleName(ValoTheme.COMBOBOX_SMALL);
     // contactPerson.setRequired(true);
-    addComponent(Styles.questionize(contactPerson, "Main contact person of this affiliation.",
-        "Contact Person"));
+    addComponent(Styles.questionize(contactPerson, "Hauptansprechpartner dieser Zugehörigkeit.", //Main contact person of this affiliation.
+        "Ansprechpartner"));//Contact Person
 
-    head = new ComboBox("Head", personMap.keySet());
+    head = new ComboBox("Leitung", personMap.keySet()); //Head
     head.setWidth("300px");
     head.setFilteringMode(FilteringMode.CONTAINS);
     // head.setRequired(true);
     head.setStyleName(ValoTheme.COMBOBOX_SMALL);
-    addComponent(Styles.questionize(head, "Head of this affiliation.", "Head"));
+    addComponent(Styles.questionize(head, "Leitung dieser Zugehörigkeit", "Leitung"));//Head of this affiliation. , Head
 
-    street = new TextField("Street");
+    street = new TextField("Straße"); //Street
     street.setWidth("300px");
     street.setRequired(true);
     addComponent(street);
 
-    zipCode = new TextField("Zip Code");
+    zipCode = new TextField("Postleitzahl"); //Zip Code
     zipCode.setWidth("300px");
     zipCode.setRequired(true);
     addComponent(zipCode);
 
-    city = new TextField("City");
+    city = new TextField("Stadt"); //City
     city.setWidth("300px");
     city.setRequired(true);
     addComponent(city);
 
-    country = new TextField("Country");
+    country = new TextField("Land"); // Country
     country.setWidth("300px");
     country.setRequired(true);
     addComponent(country);
 
-    webpage = new TextField("Webpage");
+    webpage = new TextField("Webseite"); //Webpage
     webpage.setWidth("300px");
     // TODO webpage formats are difficult
     // webpage.addValidator(
     // new RegexpValidator(Helpers.VALID_URL_REGEX, "This is not a valid web page format."));
     addComponent(webpage);
 
-    commit = new Button("Register Affiliation");
+     commit = new Button("Zugehörigkeit registrieren"); //Register Affiliation
     addComponent(commit);
   }
 
