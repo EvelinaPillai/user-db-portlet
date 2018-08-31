@@ -311,6 +311,8 @@ public class UserDBPortletUI extends QBiCPortletUI {
           put("Q_SAMPLE_PREPARATION", "Sample Preparations");
           put("Q_MS_MEASUREMENT", "Mass Spectrometry");
           put("Q_NGS_MEASUREMENT", "NGS Sequencing");
+          put("Q_CFH_ELEMENT", "Element Analysis");
+          put("Q_CFH_NMIN", "Nmin Analysis");
         };
       };
 
