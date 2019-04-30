@@ -15,6 +15,8 @@
  *******************************************************************************/
 package life.qbic.userdb.views;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -82,8 +84,12 @@ public class AffiliationInput extends FormLayout {
     organization.setInputPrompt("...oder Name der Universität"); //or university name
     organization.setDescription("Organisation oder Name der Universität");
     addComponent(organization);
-
-    institute = new ComboBox("Institut", institutes);
+   
+    ArrayList<String> sortedInstitute = new ArrayList<String>(institutes);
+    Collections.sort(sortedInstitute);
+        
+    institute = new ComboBox("Institut", sortedInstitute);
+    //institute = new ComboBox("Institut", institutes);
     institute.setWidth("300px");
     institute.setNewItemsAllowed(true);
     institute.setStyleName(ValoTheme.COMBOBOX_SMALL);

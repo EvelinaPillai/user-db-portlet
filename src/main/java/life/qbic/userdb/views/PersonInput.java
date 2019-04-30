@@ -15,6 +15,8 @@
  *******************************************************************************/
 package life.qbic.userdb.views;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -101,7 +103,10 @@ public class PersonInput extends HorizontalLayout {
     phone = new TextField("Telefon");
     left.addComponent(phone);
 
-    affiliation = new ComboBox("Zugehörigkeit", affiliations.keySet());
+    ArrayList<String> sortedAffiliations = new ArrayList<String>(affiliations.keySet());
+    
+    Collections.sort(sortedAffiliations);
+    affiliation = new ComboBox("Zugehörigkeit", sortedAffiliations);
     // affiliation.setNullSelectionAllowed(false);
     affiliation.setRequired(true);
     affiliation.setFilteringMode(FilteringMode.CONTAINS);
