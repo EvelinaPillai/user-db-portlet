@@ -155,7 +155,7 @@ public class ProjectView extends VerticalLayout {
         if (item != null) {
           projectInfo.setVisible(true);
           projectInfo.setCaption(projectMap.get(item).getProjectCode());
-          System.out.println(projectMap.get(item));
+          //System.out.println(projectMap.get(item));
           altName.setValue(projectMap.get(item).getSecondaryName());
           investigator.setValue(projectMap.get(item).getInvestigator());
           contact.setValue(projectMap.get(item).getContact());
